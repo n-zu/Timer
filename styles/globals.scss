@@ -11,6 +11,15 @@ a {
   text-decoration: none;
 }
 
+i {
+  user-select: none;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
 }

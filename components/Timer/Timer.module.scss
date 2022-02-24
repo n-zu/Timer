@@ -1,0 +1,81 @@
+@import "../../styles/constants.scss";
+@import "../../styles/hidable.scss";
+
+.container {
+  @include vertical-container;
+  padding: 0 1rem;
+
+  --hue: 0;
+  --color1: hsl(0, 70%, 50%); // 0 - 360
+  //background-color: hsl(0, 70%, 70%); // 0 - 360
+  //color: hsl(0, 70%, 50%); // 0 - 360
+}
+.current {
+  @include vertical-container;
+}
+
+.Time {
+  font-size: 2em;
+  padding: 0.5em;
+  font-weight: 600;
+}
+
+.Event {
+  @include vertical-container;
+  @include rounded;
+  .header {
+    @include horizontal-container;
+    @include nowrap;
+    justify-content: space-between;
+    color: hsl(var(--hue), 70%, 90%);
+    font-weight: 700;
+    background-color: hsl(var(--hue), 65%, 50%);
+    border-radius: 0.5rem 0.5rem 0 0;
+
+    > div {
+      @include horizontal-container;
+      height: 100%;
+      width: 30%;
+      padding: 0.1rem;
+    }
+    .duration {
+      width: 100%;
+    }
+    .config > i {
+      font-size: 1.2em;
+    }
+  }
+  .text {
+    @include vertical-container;
+    justify-content: flex-start;
+    background-color: hsl(var(--hue), 60%, 75%);
+    color: hsl(calc(var(--hue)), 80%, 35%);
+    border-radius: 0 0 0.5rem 0.5rem;
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 0.5rem;
+      min-width: 80%;
+      border-bottom: 1px solid #0000;
+      transition: border-bottom 1s ease-out;
+    }
+    .description {
+      transition: max-height 1s ease-in-out;
+      overflow: hidden;
+      max-height: 0;
+
+      > div {
+        padding: 0.5rem;
+      }
+    }
+    &:hover {
+      .title {
+        border-bottom: 1px solid hsl(var(--hue), 50%, 50%);
+      }
+      .description {
+        max-height: 300px;
+      }
+    }
+  }
+}
