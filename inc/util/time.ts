@@ -1,11 +1,14 @@
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 
-export const getTime = (time?: Date | number | string, format?: string) => {
+export const getTime = (
+  time?: Date | number | string,
+  format?: string
+): string => {
   return moment(time).format(format ?? "HH:mm:ss");
 };
 
-export const getTimeStamp = (time?: Date | number | string) => {
+export const getTimeStamp = (time?: Date | number | string): number => {
   return moment(time).valueOf();
 };
 
@@ -20,9 +23,12 @@ export const getDuration = (
   return moment.utc(duration.asMilliseconds()).format(format);
 };
 
-export const useCurrent = (updateTimeMs: number = 500, getTime) => {
+export const useCurrent = <T>(
+  updateTimeMs: number = 500,
+  getTime: () => T
+): T => {
   const interval = useRef(null);
-  const [time, setTime] = useState(getTime());
+  const [time, setTime] = useState<T>(getTime());
 
   useEffect(() => {
     interval.current = setInterval(() => {
@@ -34,8 +40,8 @@ export const useCurrent = (updateTimeMs: number = 500, getTime) => {
   return time;
 };
 
-export const useCurrentTime = (updateTimeMs: number = 500) =>
+export const useCurrentTime = (updateTimeMs: number = 500): string =>
   useCurrent(updateTimeMs, getTime);
 
-export const useCurrentTimeStamp = (updateTimeMs: number = 500) =>
+export const useCurrentTimeStamp = (updateTimeMs: number = 500): number =>
   useCurrent(updateTimeMs, getTimeStamp);

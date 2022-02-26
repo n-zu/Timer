@@ -1,14 +1,10 @@
 @import "../../styles/constants.scss";
-@import "../../styles/hidable.scss";
 
 .container {
   @include vertical-container;
   padding: 0 1rem;
 
   --hue: 0;
-  --color1: hsl(0, 70%, 50%); // 0 - 360
-  //background-color: hsl(0, 70%, 70%); // 0 - 360
-  //color: hsl(0, 70%, 50%); // 0 - 360
 }
 .current {
   @include vertical-container;
@@ -78,4 +74,8 @@
       }
     }
   }
+}
+
+.SelectEvent {
+  display: grid;
 }

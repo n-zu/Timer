@@ -1,7 +1,7 @@
 import { getTime, getDuration, useCurrentTimeStamp } from "../../util/time";
+import { getEventType } from "../../events/events";
 
-import { Event } from "../../util/types";
-import { eventHues } from "./Events";
+import { Event } from "../../events/types";
 import styles from "./Timer.module.scss";
 
 type CurrentEventProps = {
@@ -12,8 +12,10 @@ const CurrentEvent = ({ event }: CurrentEventProps) => {
   const currentTimeStamp = useCurrentTimeStamp();
   const { type, startTime, title, description } = event;
 
+  const eventType = getEventType(type);
+
   return (
-    <div className={styles.Event} style={{ ["--hue" as any]: eventHues[type] }}>
+    <div className={styles.Event} style={{ ["--hue" as any]: eventType.hue }}>
       <div className={styles.header}>
         <div className={styles.start}>{getTime(startTime, "HH:mm")}</div>
         <div className={styles.duration}>
