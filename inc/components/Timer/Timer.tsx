@@ -33,7 +33,9 @@ const Timer = () => {
         <CurrentTime />
         <CurrentEvent event={event} />
       </div>
-      <SelectEvent select={select} />
+      <div className={styles.selector}>
+        <SelectEvent select={select} />
+      </div>
     </section>
   );
 };

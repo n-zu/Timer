@@ -1,18 +1,30 @@
-import { getTimeStamp } from "../../util/time";
-import { getEvents } from "../../events/events";
+import _ from "lodash";
+import { useMemo, useState } from "react";
+import { getEvents, getEventType } from "../../events/events";
 
-import styles from "./Timer.module.scss";
-import { Dispatch, SetStateAction } from "react";
 import { UntimedEvent } from "../../events/types";
+import styles from "./Timer.module.scss";
 
-const EventSelector = ({ event, select }) => {
+type EventSelectorProps = {
+  type: number;
+  events: UntimedEvent[];
+  select: (event: UntimedEvent) => void;
+};
+
+const EventSelector = ({ type, events, select }: EventSelectorProps) => {
+  const eventType = getEventType(type);
+  const [current, setCurrent] = useState(0);
+
+  const onClick = () => {
+    select(events[current]);
+  };
   return (
     <div
+      onClick={onClick}
       className={styles.EventSelector}
-      onClick={select}
-      title={event.description}
+      style={{ ["--hue" as any]: eventType.hue }}
     >
-      {event.title}
+      {events[current].title}
     </div>
   );
 };
@@ -23,11 +35,19 @@ type SelectEventProps = {
 
 const SelectEvent = ({ select }: SelectEventProps) => {
   const events = getEvents();
+  const groupedEvents: {
+    [type: number]: UntimedEvent[];
+  } = useMemo(() => _.groupBy(events, "type"), [events]);
 
   return (
     <div className={styles.SelectEvent}>
-      {events.map((event, i) => (
-        <EventSelector key={i} event={event} select={() => select(event)} />
+      {Object.entries(groupedEvents).map(([type, events]) => (
+        <EventSelector
+          key={type}
+          type={parseInt(type)}
+          events={events}
+          select={select}
+        />
       ))}
     </div>
   );

@@ -6,6 +6,8 @@
 
   --hue: 0;
 }
+
+// ---------- CURRENT SECTION ----------
 .current {
   @include vertical-container;
 }
@@ -50,7 +52,7 @@
 
     .title {
       font-size: 1.5rem;
-      font-weight: 600;
+      font-weight: 700;
       padding: 0.5rem;
       min-width: 80%;
       border-bottom: 1px solid #0000;
@@ -76,6 +78,33 @@
   }
 }
 
+// ---------- SELECTOR SECTION ----------
+
+.selector {
+  width: 100%;
+  padding-top: 1rem;
+}
+
 .SelectEvent {
+  width: 100%;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.5rem 1rem;
+
+  .EventSelector {
+    @include vertical-container;
+    @include rounded(5px);
+    height: 3rem;
+    background-color: hsl(var(--hue), 60%, 75%);
+    color: hsl(calc(var(--hue)), 80%, 35%);
+    font-size: 1.25rem;
+    font-weight: 700;
+    &:hover {
+      background-color: hsl(var(--hue), 60%, 90%);
+    }
+    &:active {
+      background-color: hsl(var(--hue), 70%, 70%);
+      color: #fff;
+    }
+  }
 }
