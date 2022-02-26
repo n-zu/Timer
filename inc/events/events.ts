@@ -1,25 +1,40 @@
 import { EventTypeData, UntimedEvent } from "./types";
 
+// ---------- COLORS ----------
+// <div className={styles.selector}><div className={styles.SelectEvent}>
+//     {[...Array(37)].map((x, i) => (
+//         <div key={i} className={styles.EventSelector} style={{ ["--hue" as any]: i * 10 }}
+//           {i * 10}  </div>))}</div></div>;
+enum hues {
+  red = 0,
+  orange = 20,
+  yellow = 40,
+  green = 80,
+  blue = 210,
+  purple = 250,
+  pink = 320,
+}
+
 const eventTypes: EventTypeData[] = [
   {
     id: 0,
     type: "Unknown",
-    hue: 0,
+    hue: hues.yellow,
   },
   {
     id: 1,
     type: "Work",
-    hue: 20,
+    hue: hues.orange,
   },
   {
     id: 2,
     type: "Study",
-    hue: 40,
+    hue: hues.blue,
   },
   {
     id: 3,
     type: "Other",
-    hue: 60,
+    hue: hues.green,
   },
 ];
 
@@ -37,48 +52,47 @@ const events: UntimedEvent[] = [
   },
   {
     type: 1,
-    title: "Work",
-    description: "Sirius: environment app",
+    title: "env-app",
+    description: "Work on Sirius: environment app",
   },
   {
     type: 1,
-    title: "Work",
-    description: "Sirius: automated defense",
+    title: "respond",
+    description: "Work on Sirius: automated defense",
   },
   {
     type: 2,
-    title: "Study",
-    description: "Labo",
+    title: "Labo",
+    description: "Study Laboratory for FIUBA",
   },
   {
     type: 2,
-    title: "Study",
-    description: "Web Development",
+    title: "Web Dev",
+    description:
+      "Look into Web Development Technologies & Put them into practice.\nNext / WPA / WASM / Databases / etc.",
   },
   {
     type: 2,
-    title: "Study",
-    description: "Other",
+    title: "Other",
+    description: "Other Learning",
   },
   {
     type: 3,
-    title: "Other",
-    description: "Sleep",
+    title: "Sleep",
   },
   {
     type: 3,
-    title: "Other",
-    description: "Play",
+    title: "Play",
   },
   {
     type: 3,
-    title: "Other",
-    description: "Read",
+    title: "Read",
+    description: "Stormlight Archive / Web LN / etc.",
   },
   {
     type: 3,
-    title: "Other",
-    description: "Watch TV",
+    title: "Watch TV",
+    description: "Anime / Critical Role",
   },
 ];
 

@@ -33,6 +33,13 @@ TODO
   - Middle Ware 1 - Refactor Event Timeline API
   - Middle Ware 2 - Implement w/ Redux
 
+- Fix
+
+  - 59m 59s appears when selecting an event
+
+- Other
+  - Licensing ?
+
 ### Imports
 
 - `typescript @types/react @types/node`: Type definitions for React and Node.js. ( else \_documnet.tsx throws an error )

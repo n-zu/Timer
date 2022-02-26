@@ -17,6 +17,7 @@ const EventSelector = ({ type, events, select }: EventSelectorProps) => {
 
   const onClick = () => {
     select(events[current]);
+    setCurrent((c) => (c + 1) % events.length);
   };
   return (
     <div
