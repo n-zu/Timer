@@ -21,15 +21,13 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type TimerProps = PropsFromRedux & {};
 
 const Timer = ({ events, addEvent, clearEvents }: TimerProps) => {
-  const [event, setEvent]: [
-    event: Event,
-    setEvent: Dispatch<SetStateAction<Event>>
-  ] = useState<Event>({
+  const event = events?.[events.length - 1] ?? {
     id: 0,
     type: 0,
-    title: "Initial event",
+    title: "Untitled",
+    description: "App's initial event",
     startTime: getTimeStamp(),
-  });
+  };
 
   // ---------------------------------------------------------------------------
   const logEvents = () => {
@@ -44,7 +42,6 @@ const Timer = ({ events, addEvent, clearEvents }: TimerProps) => {
       startTime: getTimeStamp(),
     };
     addEvent(newEvent);
-    setEvent(newEvent);
   };
 
   return (
