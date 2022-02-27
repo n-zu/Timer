@@ -27,11 +27,12 @@ TODO
 
 - Development
 
-  - Event Selector 1 - All Events
-  - Event Selector 2 - Group by type
-  - Event Timeline 1 - Save Events List
-  - Middle Ware 1 - Refactor Event Timeline API
-  - Middle Ware 2 - Implement w/ Redux
+  - [x] Event Selector 1 - All Events
+  - [x] Event Selector 2 - Group by type
+  - [x] Event Timeline 1 - Save Events List
+  - [ ] Middle Ware 1 - Implement w/ Redux
+  - [ ] Event Timeline 2 - Show Events List
+  - [ ] UX / UI
 
 - Fix
 

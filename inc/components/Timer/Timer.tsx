@@ -19,12 +19,31 @@ const Timer = () => {
     startTime: getTimeStamp(),
   });
 
+  // ---------------------------------------------------------------------------
+  const [eventList, setEventList] = useState<Event[]>([]);
+  const minEventDuration = 5000; // ms
+  const addEvent = (event: Event) => {
+    const lastStartTime = eventList.at(-1)?.startTime ?? 0;
+    const duration = getTimeStamp() - lastStartTime;
+    if (duration < minEventDuration) {
+      setEventList((e) => [...e.slice(0, -1), event]);
+    } else {
+      setEventList((e) => [...e, event]);
+    }
+  };
+  const logEvents = () => {
+    console.table(eventList);
+  };
+  // ---------------------------------------------------------------------------
+
   const select = (event: UntimedEvent) => {
-    setEvent((e) => ({
+    const newEvent: Event = {
+      id: eventList.length,
       ...event,
       startTime: getTimeStamp(),
-      id: e.id + 1,
-    }));
+    };
+    addEvent(newEvent);
+    setEvent(newEvent);
   };
 
   return (
@@ -35,6 +54,9 @@ const Timer = () => {
       </div>
       <div className={styles.selector}>
         <SelectEvent select={select} />
+      </div>
+      <div className={styles.selector} onClick={logEvents}>
+        LOG EVENTS
       </div>
     </section>
   );
