@@ -30,7 +30,7 @@ TODO
   - [x] Event Selector 1 - All Events
   - [x] Event Selector 2 - Group by type
   - [x] Event Timeline 1 - Save Events List
-  - [ ] Middle Ware 1 - Implement w/ Redux
+  - [x] Middle Ware 1 - Implement Redux API
   - [ ] Event Timeline 2 - Show Events List
   - [ ] UX / UI
 
@@ -45,3 +45,8 @@ TODO
 
 - `typescript @types/react @types/node`: Type definitions for React and Node.js. ( else \_documnet.tsx throws an error )
 - `next-pwa`
+
+### Notes
+
+- [Immer](https://immerjs.github.io/immer/) is so cool
+  - should check [osawards](https://osawards.com/)

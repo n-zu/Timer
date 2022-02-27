@@ -2,7 +2,7 @@ import _ from "lodash";
 import { useMemo, useState } from "react";
 import { getEvents, getEventType } from "../../events/events";
 
-import { UntimedEvent } from "../../events/types";
+import type { UntimedEvent } from "../../events/types";
 import styles from "./Timer.module.scss";
 
 type EventSelectorProps = {

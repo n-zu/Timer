@@ -1,14 +1,27 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { getTimeStamp } from "../../util/time";
 
+import {
+  connect,
+  mapStateToPropsType,
+  mapDispatchToPropsType,
+} from "../../store/hooks";
+
+import { addEvent } from "../../store/eventsSlice";
+
 import CurrentTime from "./CurrentTime";
 import CurrentEvent from "./CurrentEvent";
 import SelectEvent from "./SelectEvent";
 
-import { Event, UntimedEvent } from "../../events/types";
+import type { Event, UntimedEvent } from "../../events/types";
 import styles from "./Timer.module.scss";
 
-const Timer = () => {
+type TimerProps = {
+  events: Event[];
+  addEvent: (event: Event) => void;
+};
+
+const Timer = ({ events, addEvent }: TimerProps) => {
   const [event, setEvent]: [
     event: Event,
     setEvent: Dispatch<SetStateAction<Event>>
@@ -20,25 +33,14 @@ const Timer = () => {
   });
 
   // ---------------------------------------------------------------------------
-  const [eventList, setEventList] = useState<Event[]>([]);
-  const minEventDuration = 5000; // ms
-  const addEvent = (event: Event) => {
-    const lastStartTime = eventList.at(-1)?.startTime ?? 0;
-    const duration = getTimeStamp() - lastStartTime;
-    if (duration < minEventDuration) {
-      setEventList((e) => [...e.slice(0, -1), event]);
-    } else {
-      setEventList((e) => [...e, event]);
-    }
-  };
   const logEvents = () => {
-    console.table(eventList);
+    console.table(events);
   };
   // ---------------------------------------------------------------------------
 
   const select = (event: UntimedEvent) => {
     const newEvent: Event = {
-      id: eventList.length,
+      id: events.length,
       ...event,
       startTime: getTimeStamp(),
     };
@@ -62,4 +64,12 @@ const Timer = () => {
   );
 };
 
-export default Timer;
+const mapStateToProps: mapStateToPropsType = (state) => ({
+  events: state.events.events,
+});
+
+const mapDispatchToProps: mapDispatchToPropsType = (dispatch) => ({
+  addEvent: (event) => dispatch(addEvent(event)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timer);

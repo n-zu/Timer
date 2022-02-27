@@ -1,7 +1,7 @@
 import { getTime, getDuration, useCurrentTimeStamp } from "../../util/time";
 import { getEventType } from "../../events/events";
 
-import { Event } from "../../events/types";
+import type { Event } from "../../events/types";
 import styles from "./Timer.module.scss";
 
 type CurrentEventProps = {
