@@ -3,11 +3,11 @@ import { getTimeStamp } from "../../util/time";
 
 import {
   connect,
-  mapStateToPropsType,
-  mapDispatchToPropsType,
+  type ConnectedProps,
+  type RootState,
+  type AppDispatch,
 } from "../../store/hooks";
-
-import { addEvent } from "../../store/eventsSlice";
+import { addEvent, clearEvents } from "../../store/eventsSlice";
 
 import CurrentTime from "./CurrentTime";
 import CurrentEvent from "./CurrentEvent";
@@ -16,12 +16,11 @@ import SelectEvent from "./SelectEvent";
 import type { Event, UntimedEvent } from "../../events/types";
 import styles from "./Timer.module.scss";
 
-type TimerProps = {
-  events: Event[];
-  addEvent: (event: Event) => void;
-};
+const connector = connect(mapStateToProps, mapDispatchToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type TimerProps = PropsFromRedux & {};
 
-const Timer = ({ events, addEvent }: TimerProps) => {
+const Timer = ({ events, addEvent, clearEvents }: TimerProps) => {
   const [event, setEvent]: [
     event: Event,
     setEvent: Dispatch<SetStateAction<Event>>
@@ -57,19 +56,25 @@ const Timer = ({ events, addEvent }: TimerProps) => {
       <div className={styles.selector}>
         <SelectEvent select={select} />
       </div>
-      <div className={styles.selector} onClick={logEvents}>
-        LOG EVENTS
+      <div className={styles.selector}>
+        <button onClick={logEvents}>Log events</button>
+        <button onClick={clearEvents}>Clear events</button>
       </div>
     </section>
   );
 };
 
-const mapStateToProps: mapStateToPropsType = (state) => ({
-  events: state.events.events,
-});
+function mapStateToProps(state: RootState) {
+  return {
+    events: state.events.events,
+  };
+}
 
-const mapDispatchToProps: mapDispatchToPropsType = (dispatch) => ({
-  addEvent: (event) => dispatch(addEvent(event)),
-});
+function mapDispatchToProps(dispatch: AppDispatch) {
+  return {
+    addEvent: (event: Event) => dispatch(addEvent(event)),
+    clearEvents: () => dispatch(clearEvents()),
+  };
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Timer);
+export default connector(Timer);

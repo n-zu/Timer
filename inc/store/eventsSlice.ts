@@ -2,6 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { Event } from "../events/types";
 import { getTimeStamp } from "../util/time";
 
+export const _getInitialEvents = (): Event[] => {
+  try {
+    const events = localStorage?.getItem("events");
+    if (events) return JSON.parse(events);
+    return [];
+  } catch (e) {
+    return [];
+  }
+};
+
+export const _saveEvents = async (events: Event[]) => {
+  try {
+    localStorage.setItem("events", JSON.stringify(events));
+  } catch (e) {
+    return;
+  }
+};
+
 const minEventDuration = 5000; // ms
 
 export const eventsSlice = createSlice({
@@ -20,9 +38,12 @@ export const eventsSlice = createSlice({
         state.events = [...state.events, event.payload];
       }
     },
+    clearEvents: (state) => {
+      state.events = [];
+    },
   },
 });
 
-export const { addEvent } = eventsSlice.actions;
+export const { addEvent, clearEvents } = eventsSlice.actions;
 
 export default eventsSlice.reducer;
