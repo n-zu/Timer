@@ -1,0 +1,51 @@
+@import "../../styles/constants.scss";
+
+.EventTimeline {
+  @include vertical-container;
+  z-index: 0;
+  --hue: 0;
+  --dur: calc(60 * 5);
+  .Events {
+    @include vertical-container;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+    .EventBlock {
+      @include vertical-container;
+      @include rounded(7px);
+      z-index: 2;
+      position: relative;
+      padding: 0.5rem 1rem;
+      background-color: hsl(var(--hue), 100%, 90%);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0.7rem;
+        height: 100%;
+        border-radius: 7px 4px 4px 7px;
+        background-color: hsl(var(--hue), 100%, 80%);
+        box-shadow: 3px 0px 6px -3px #0008;
+      }
+      .title {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+      .details {
+        display: none;
+      }
+      @media screen and (min-width: 400px) {
+        .details {
+          display: block;
+        }
+      }
+
+      &:hover {
+        .details {
+          display: block;
+        }
+      }
+    }
+  }
+}

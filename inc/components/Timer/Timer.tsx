@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction, useState } from "react";
 import { getTimeStamp } from "../../util/time";
 
 import {
@@ -7,7 +6,7 @@ import {
   type RootState,
   type AppDispatch,
 } from "../../store/hooks";
-import { addEvent, clearEvents } from "../../store/eventsSlice";
+import { addEvent } from "../../store/eventsSlice";
 
 import CurrentTime from "./CurrentTime";
 import CurrentEvent from "./CurrentEvent";
@@ -20,7 +19,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 type TimerProps = PropsFromRedux & {};
 
-const Timer = ({ events, addEvent, clearEvents }: TimerProps) => {
+const Timer = ({ events, addEvent }: TimerProps) => {
   const event = events?.[events.length - 1] ?? {
     id: 0,
     type: 0,
@@ -28,12 +27,6 @@ const Timer = ({ events, addEvent, clearEvents }: TimerProps) => {
     description: "App's initial event",
     startTime: getTimeStamp(),
   };
-
-  // ---------------------------------------------------------------------------
-  const logEvents = () => {
-    console.table(events);
-  };
-  // ---------------------------------------------------------------------------
 
   const select = (event: UntimedEvent) => {
     const newEvent: Event = {
@@ -53,10 +46,6 @@ const Timer = ({ events, addEvent, clearEvents }: TimerProps) => {
       <div className={styles.selector}>
         <SelectEvent select={select} />
       </div>
-      <div className={styles.selector}>
-        <button onClick={logEvents}>Log events</button>
-        <button onClick={clearEvents}>Clear events</button>
-      </div>
     </section>
   );
 };
@@ -70,7 +59,6 @@ function mapStateToProps(state: RootState) {
 function mapDispatchToProps(dispatch: AppDispatch) {
   return {
     addEvent: (event: Event) => dispatch(addEvent(event)),
-    clearEvents: () => dispatch(clearEvents()),
   };
 }
 

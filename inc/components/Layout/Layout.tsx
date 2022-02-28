@@ -1,7 +1,29 @@
+import Link from "next/link";
+import Menu from "./Menu";
+
 import styles from "./Layout.module.scss";
+import { useState } from "react";
 
 const Header = () => {
-  return <header className={styles.header}>Timer</header>;
+  const [showMenu, setShowMenu] = useState(false);
+  const toggleMenu = () => setShowMenu(!showMenu);
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.icon}>
+        <Link href={"/events/timer"}>
+          <a className="material-icons">home</a>
+        </Link>
+      </div>
+      <div>Timer</div>
+      <div className={styles.icon}>
+        <i className="material-icons" onClick={toggleMenu}>
+          menu
+        </i>
+      </div>
+      <Menu show={showMenu} />
+    </header>
+  );
 };
 
 const Footer = () => {

@@ -1,5 +1,4 @@
-import { getTime, useCurrentTime } from "../../util/time";
-import { useEffect, useRef, useState } from "react";
+import { useCurrentTime } from "../../util/time";
 
 import styles from "./Timer.module.scss";
 

@@ -27,7 +27,7 @@ const CurrentEvent = ({ event }: CurrentEventProps) => {
   return (
     <div className={styles.Event} style={style}>
       <div className={styles.header}>
-        <div className={styles.start}>{getTime(startTime, "HH:mm")}</div>
+        <div className={styles.start}>{getTime(startTime)}</div>
         <div className={styles.duration}>
           {getDuration(event.startTime, currentTimeStamp)}
         </div>

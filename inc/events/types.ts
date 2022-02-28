@@ -17,3 +17,10 @@ export type UntimedEvent = {
 export type Event = UntimedEvent & {
   startTime: number;
 } & wid;
+
+export type DisplayEvent = UntimedEvent & {
+  startTime: string;
+  endTime: string | null;
+  duration: string | null;
+  _duration: number | null;
+} & wid;
