@@ -55,4 +55,18 @@ TODO
 ### Notes
 
 - [Immer](https://immerjs.github.io/immer/) is so cool
+
   - should check [osawards](https://osawards.com/)
+
+- [Vercel Ignore Build Step](https://vercel.com/support/articles/how-do-i-use-the-ignored-build-step-field-on-vercel)
+
+- [Icons](https://fonts.google.com/icons)
+
+- Web workers
+
+  - [Explained](https://www.youtube.com/watch?v=Gcp7triXFjg&ab_channel=DevSage)
+  - [Example](https://www.reddit.com/r/reactjs/comments/gcqlm9/how_to_show_a_spinner_while_doing_an_expensive/)
+
+- [Persist Redux State](https://dev.to/igorovic/simplest-way-to-persist-redux-state-to-localstorage-e67)
+
+- [https://overreacted.io/](https://overreacted.io/)
