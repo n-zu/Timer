@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Layout from "../../inc/components/Layout/Layout";
-import EventTimeline from "../../inc/components/EventTimeline/EventTimeline";
+import Layout from "../../components/Layout/Layout";
+import EventTimeline from "../../components/EventTimeline/EventTimeline";
 
 export default function Home() {
   return (

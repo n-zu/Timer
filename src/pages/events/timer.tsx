@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Layout from "../../inc/components/Layout/Layout";
-import Timer from "../../inc/components/Timer/Timer";
+import Layout from "../../components/Layout/Layout";
+import Timer from "../../components/Timer/Timer";
 
 export default function Home() {
   return (
