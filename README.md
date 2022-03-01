@@ -25,8 +25,11 @@ And while at it, why not try a few of those technologies that were buried in the
 
 ## Features
 
-> TODO: GIFS & PICS OF APP \
-> MOBILE SCREENS
+<div align="center">
+  <img width="200" alt="image" src="https://user-images.githubusercontent.com/66538092/156170230-e750e9f6-aae1-487e-a31c-b9fb261b119c.png">
+  <img width="200" alt="image" src="https://user-images.githubusercontent.com/66538092/156170323-70e97061-41e8-485d-8d53-62f4813ee9e0.png">
+  <img width="200" alt="image" src="https://user-images.githubusercontent.com/66538092/156170423-992d992e-df64-45e7-820f-93f38d12e325.png">
+</div>
 
 **Note:** Some alleged features are not yet implemented.
 
