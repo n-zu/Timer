@@ -7,8 +7,9 @@
   --dur: calc(60 * 5);
   .Events {
     @include vertical-container;
+    flex-direction: column-reverse;
     gap: 1rem;
-    padding: 1rem 0.5rem;
+    padding: 0 0.5rem;
     .EventBlock {
       @include vertical-container;
       @include rounded(7px);
@@ -46,6 +47,14 @@
           display: block;
         }
       }
+    }
+  }
+  .Controls {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    button {
+      padding: 0.5rem;
     }
   }
 }

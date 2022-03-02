@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>Timer - Events</title>
+        <title>Events Timeline</title>
         <meta name="description" content="See Event Timeline" />
       </Head>
       <EventTimeline />

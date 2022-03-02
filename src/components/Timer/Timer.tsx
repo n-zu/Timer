@@ -1,11 +1,7 @@
 import { getTimeStamp } from "../../util/time";
 
-import {
-  connect,
-  type ConnectedProps,
-  type RootState,
-  type AppDispatch,
-} from "../../store/hooks";
+import { connect } from "react-redux";
+import type { ConnectedProps, RootState, AppDispatch } from "../../store/hooks";
 import { addEvent } from "../../store/eventsSlice";
 
 import CurrentTime from "./CurrentTime";

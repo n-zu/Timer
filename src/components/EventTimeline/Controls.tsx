@@ -1,6 +1,8 @@
+import styles from "./EventTimeline.module.scss";
+
 const Controls = ({ fullEvents, addEvent, clearEvents }) => {
   return (
-    <div>
+    <div className={styles.Controls}>
       <button
         onClick={() =>
           addEvent({

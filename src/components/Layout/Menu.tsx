@@ -15,6 +15,9 @@ const Menu = ({ show }: MenuProps) => {
         <Link href="/events/timeline">
           <a className={styles.menuItem}>Timeline</a>
         </Link>
+        <Link href="/events/statistics">
+          <a className={styles.menuItem}>Statistics</a>
+        </Link>
       </div>
     </div>
   );
