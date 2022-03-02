@@ -37,7 +37,7 @@ type SelectEventProps = {
 const SelectEvent = ({ select }: SelectEventProps) => {
   const events = getEvents();
   const groupedEvents: {
-    [type: number]: UntimedEvent[];
+    [type: string]: UntimedEvent[];
   } = useMemo(() => _.groupBy(events, "type"), [events]);
 
   return (

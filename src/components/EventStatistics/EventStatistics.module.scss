@@ -3,4 +3,6 @@
 .EventStatistics {
   @include vertical-container;
   width: 100%;
+  padding: 1rem;
+  max-width: 20rem;
 }

@@ -1,4 +1,5 @@
 import { getTime, getDuration, _getDuration } from "../util/time";
+import _ from "lodash";
 import { Event, DisplayEvent } from "./types";
 
 export const calculateDisplayEvents = (events: Event[]): DisplayEvent[] => {
@@ -27,4 +28,25 @@ export const calculateDisplayEvents = (events: Event[]): DisplayEvent[] => {
     });
   console.timeEnd();
   return displayEvents;
+};
+
+type Data = {
+  type: number;
+  duration: number; // minutes
+};
+
+export const calculateStats = (events: DisplayEvent[]): Data[] => {
+  const groupedData: {
+    [type: string]: DisplayEvent[];
+  } = _.groupBy(events, "type");
+
+  const stats: Data[] = [];
+
+  Object.keys(groupedData).forEach((k) => {
+    const type = parseInt(k);
+    const duration = groupedData[k].reduce((tot, ev) => tot + ev._duration, 0);
+    stats.push({ type, duration });
+  });
+
+  return stats;
 };

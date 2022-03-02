@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { connect } from "react-redux";
 import type { ConnectedProps, RootState, AppDispatch } from "../../store/hooks";
 import { addEvent, clearEvents } from "../../store/eventsSlice";
-import { calculateDisplayEvents } from "../../events/functions";
+import { calculateDisplayEvents, calculateStats } from "../../events/functions";
 
 import PieChart from "./PieChart";
 
@@ -20,11 +20,11 @@ const EventStatistics = ({
 }: EventStatisticsProps) => {
   // const { events, loading } = useEvents();
   const displayEvents = useMemo(() => calculateDisplayEvents(events), [events]);
+  const stats = useMemo(() => calculateStats(displayEvents), [displayEvents]);
 
   return (
     <div className={styles.EventStatistics}>
-      HELLO
-      <PieChart />
+      <PieChart data={stats} />
     </div>
   );
 };
