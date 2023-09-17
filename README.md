@@ -1,4 +1,4 @@
-# Timer - WIP
+# Timer - DROPPED
 
 Simplistic time tracking app.
 Effortlessly log your activities & monitor your time spending.
@@ -22,6 +22,12 @@ And while at it, why not try a few of those technologies that were buried in the
 > Plus practiced some soft skills like writing (documentation), reading (articles, documentation, code) and getting feedback from others.
 
 </details>
+
+## Dropped
+
+This project has been dropped. I've opted for using [Simple Time Tracker](https://play.google.com/store/apps/details?id=com.razeeman.util.simpletimetracker&hl=en&gl=US&pli=1) which covers most of my ideas without the need of implementing it.
+
+A particular case of the build vs buy dilemma, where the existing solution is free. 
 
 ## Features
 
